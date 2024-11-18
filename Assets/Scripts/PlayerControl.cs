@@ -13,7 +13,6 @@ public class PlayerControl : MonoBehaviour
     public KeyCode InterKey;
     public float jumpSpeed;
     public float brakeForce = 5f;
-    public CinemachineFreeLook camSetup;
     Vector3 movement;
     bool colliding;
 

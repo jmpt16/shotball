@@ -363,6 +363,7 @@
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerControl.cs"
 "Assets/Scripts/PlayerPrefs.cs"
+"Assets/Scripts/ShootScript.cs"
 "Assets/Scripts/UnlockLevels.cs"
 "Assets/Scripts/Volume.cs"
 "Assets/Scripts/WonLevel.cs"
