@@ -1855,7 +1855,7 @@ MonoBehaviour:
   spread: 0
   shotsFired: 1
   cam: {fileID: 1564504072}
-  prefab: {fileID: 1017166445}
+  prefab: {fileID: 5916188466382438111, guid: cd28c6d281e742c4397d38774a6dba7c, type: 3}
   shootPoints:
   - {fileID: 1895823977}
   layerMask:
