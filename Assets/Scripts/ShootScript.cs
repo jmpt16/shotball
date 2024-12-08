@@ -1,28 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShootScript : MonoBehaviour
 {
     public float damage, range, rate, coolTime;
     public float spread;
     public int shotsFired;
-    public bool isPiercer;
     public Camera cam;
     public Transform prefab;
+    public Transform[] shootPoints;
     public LayerMask layerMask;
     // Start is called before the first frame update
-    public virtual void Shoot()
+    public virtual void Shoot(Transform t)
     {
         for (int i = 0; i < shotsFired; i++)
         {
             Vector3 angle = Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread)) * cam.transform.forward;
             //Debug.Log(Mathf.Sin(spread));
-            if (Physics.Raycast(transform.position, angle, out RaycastHit hit, range, layerMask))
+            if (Physics.Raycast(t.position, angle, out RaycastHit hit, range, layerMask))
             {
                 Debug.Log(hit.transform.name);
-                Instantiate(prefab, hit.point, transform.rotation);
+                Instantiate(prefab, hit.point, t.rotation);
             }
         }
     }
@@ -32,7 +31,10 @@ public class ShootScript : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time >= coolTime)
         {
             coolTime = Time.time + rate / 1000;
-            Shoot();
+            foreach (Transform t in shootPoints)
+			{
+				Shoot(t);
+			}
         }
     }
 }
