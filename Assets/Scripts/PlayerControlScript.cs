@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-public class PlayerControl : MonoBehaviour
+public class PlayerControlScript : MonoBehaviour
 {
     public GameObject pivot,gunPivot,camPivot;
+    public float camPivotHeight;
     public Rigidbody rb;
     public float speed;
     float moveFwrd;
@@ -14,7 +15,6 @@ public class PlayerControl : MonoBehaviour
     public float jumpSpeed;
     public float brakeForce = 5f;
     Vector3 movement;
-    bool colliding;
 
     void Start()
     {
@@ -27,8 +27,7 @@ public class PlayerControl : MonoBehaviour
         //para garantir que o movimento não é dependente do angulo vertical (cima/baixo)
         pivot.transform.rotation = new Quaternion(0, Camera.main.transform.rotation.y, 0, Camera.main.transform.rotation.w);
         gunPivot.transform.rotation = new Quaternion(Camera.main.transform.rotation.x, Camera.main.transform.rotation.y, Camera.main.transform.rotation.z, Camera.main.transform.rotation.w);
-		camPivot.transform.position = transform.position + Vector3.up;
-		//se gravidade virar, inverter antena e worldUp
+		camPivot.transform.position = transform.position + Vector3.up* camPivotHeight;
 		//input
 		moveFwrd = Input.GetAxis("Horizontal");
         moveSide = Input.GetAxis("Vertical");
