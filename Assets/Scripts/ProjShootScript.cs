@@ -6,6 +6,7 @@ public class ProjShootScript : ShootScript
 {
 	public override void Shoot(Transform t)
 	{
-		Instantiate(prefab, t.position, t.rotation);
+		Transform projectile = Instantiate(prefab, t.position, t.rotation);
+		projectile.GetComponent<ProjScript>().speed += playerControl.rb.velocity.magnitude;
 	}
 }

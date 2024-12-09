@@ -11,6 +11,7 @@ public class ShootScript : MonoBehaviour
     public Transform prefab;
     public Transform[] shootPoints;
     public LayerMask layerMask;
+    public PlayerControl playerControl;
     // Start is called before the first frame update
     public virtual void Shoot(Transform t)
     {
