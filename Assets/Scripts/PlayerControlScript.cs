@@ -36,6 +36,7 @@ public class PlayerControlScript : CharacterDataScript
         {
 			weapon.Fire();
 		}
+        checkForDeath();
 	}
 
     void FixedUpdate()

@@ -62,7 +62,7 @@ public class EnemyBehaviorScript : CharacterDataScript
 		}
 
 		gunPivot.transform.LookAt(target.position);
-
+		checkForDeath();
 	}
 
     void FixedUpdate()

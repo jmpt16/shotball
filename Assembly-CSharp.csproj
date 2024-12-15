@@ -65,7 +65,7 @@
     <Compile Include="Assets\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\WeaponPickupScript.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviorScript.cs" />
-    <Compile Include="Assets\Scripts\PickupSpawnerScript.cs" />
+    <Compile Include="Assets\Scripts\LevelManagerScript.cs" />
     <Compile Include="Assets\Scripts\HitParticleScript.cs" />
     <Compile Include="Assets\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCharacterMotor.cs" />
     <Compile Include="Assets\Scripts\ProjScript.cs" />

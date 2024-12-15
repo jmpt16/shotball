@@ -348,7 +348,7 @@
 "Assets/Scripts/CharacterDataScript.cs"
 "Assets/Scripts/EnemyBehaviorScript.cs"
 "Assets/Scripts/HitParticleScript.cs"
-"Assets/Scripts/PickupSpawnerScript.cs"
+"Assets/Scripts/LevelManagerScript.cs"
 "Assets/Scripts/PlayerControlScript.cs"
 "Assets/Scripts/ProjScript.cs"
 "Assets/Scripts/ProjShootScript.cs"

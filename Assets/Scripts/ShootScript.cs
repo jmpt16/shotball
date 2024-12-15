@@ -23,7 +23,6 @@ public class ShootScript : MonoBehaviour
                 if(hit.transform.GetComponent<CharacterDataScript>()) 
                 {
                     hit.transform.GetComponent<CharacterDataScript>().health -= damage;
-                    hit.transform.GetComponent<CharacterDataScript>().checkForDeath(transform.parent.parent.GetComponent<CharacterDataScript>());
 				}
                 Instantiate(prefab, hit.point, t.rotation);
             }

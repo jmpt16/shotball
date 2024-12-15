@@ -15,12 +15,11 @@ public class CharacterDataScript : MonoBehaviour
 	protected Vector3 movement;
 	public ShootScript weapon;
 
-	public void checkForDeath(CharacterDataScript otherGuy) 
+	public void checkForDeath() 
 	{
 		if (health<=0)
 		{
 			Destroy(gameObject);
-			otherGuy.points++;
 		}
 	}
 }
