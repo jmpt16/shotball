@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjScript : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 5f,range=5f;
     public string tag;
     public Collider[] hitColliders;
+    public Transform shooter;
+    public int damage;
 
     // Update is called once per frame
     void Update()
@@ -15,16 +18,21 @@ public class ProjScript : MonoBehaviour
         hitColliders = Physics.OverlapSphere(transform.position, .5f);
         foreach (var hitCollider in hitColliders)
         {
-            if(hitCollider.tag!= tag) 
+            if(hitCollider.transform!= shooter) 
             {
-                if (hitCollider.GetComponent<PlayerControlScript>() || hitCollider.GetComponent<EnemyBehaviorScript>())
-                    Destroy(hitCollider.gameObject);
-                Collider[] blastColliders = Physics.OverlapSphere(transform.position, 5f);
+                
+                Collider[] blastColliders = Physics.OverlapSphere(transform.position, range);
                 foreach (var item in blastColliders)
                 {
                     if (item.GetComponent<Rigidbody>())
                         item.GetComponent<Rigidbody>().AddExplosionForce(500, transform.position, 50);
-                }
+					if (item.GetComponent<CharacterDataScript>())
+					{
+						item.GetComponent<CharacterDataScript>().health -= Convert.ToInt32((range - Vector3.Distance(item.transform.position, transform.position)) / range * damage);
+                        Debug.Log(Convert.ToInt32((range - Vector3.Distance(item.transform.position, transform.position)) /range*damage)
+							+ " | "+Convert.ToInt32((range - Vector3.Distance(item.transform.position, transform.position)) * damage));
+					}
+				}
                 Destroy(gameObject);
             }
             

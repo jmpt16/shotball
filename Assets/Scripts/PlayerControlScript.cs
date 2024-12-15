@@ -1,26 +1,25 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-public class PlayerControlScript : MonoBehaviour
+
+public class PlayerControlScript : CharacterDataScript
 {
-    public GameObject pivot,gunPivot,camPivot;
+    public GameObject camPivot;
     public float camPivotHeight;
-    public Rigidbody rb;
-    public float speed;
     float moveFwrd;
     float moveSide;
-    float brake;
     public KeyCode InterKey;
-    public float jumpSpeed;
-    public float brakeForce = 5f;
-    Vector3 movement;
 
-    void Start()
+	public virtual void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
-    }
+        weapon = gunPivot.GetComponentInChildren<ShootScript>();
+		CinemachineFreeLook cinemachine=FindAnyObjectByType<CinemachineFreeLook>();
+        cinemachine.LookAt = camPivot.transform;
+        cinemachine.Follow = camPivot.transform;
+	}
 
     void Update()
     {
@@ -32,8 +31,12 @@ public class PlayerControlScript : MonoBehaviour
 		moveFwrd = Input.GetAxis("Horizontal");
         moveSide = Input.GetAxis("Vertical");
         brake = Input.GetAxis("Brake");
-        
-    }
+
+        if (Input.GetButton("Fire1"))
+        {
+			weapon.Fire();
+		}
+	}
 
     void FixedUpdate()
     {
@@ -47,7 +50,6 @@ public class PlayerControlScript : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x * 0.9f, rb.velocity.y, rb.velocity.z * 0.9f);
         }
         rb.AddForce(movement * speed);
-        Vector3 horizontalSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z);
     }
 
     private void OnCollisionStay(Collision collision)
