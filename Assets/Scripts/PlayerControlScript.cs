@@ -9,7 +9,8 @@ public class PlayerControlScript : CharacterDataScript
     public float camPivotHeight;
     float moveFwrd;
     float moveSide;
-    public KeyCode InterKey;
+    public KeyCode ScoreKey;
+	public GameObject scoreUI;
 
 	public virtual void Start()
     {
@@ -36,8 +37,9 @@ public class PlayerControlScript : CharacterDataScript
         {
 			weapon.Fire();
 		}
-        checkForDeath();
-	}
+        //checkForDeath();
+        scoreUI.SetActive(Input.GetKey(ScoreKey));
+    }
 
     void FixedUpdate()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehaviorScript : CharacterDataScript
@@ -26,6 +27,8 @@ public class EnemyBehaviorScript : CharacterDataScript
 			if (!target)
 			{
 				target = FindFirstObjectByType<PlayerControlScript>().transform;
+				if (target.GetComponent<PlayerControlScript>().dead)
+					target = null;
 			}
 			if (Physics.Linecast(transform.position, target.position, out hit) && hit.transform == target.transform)
 			{
@@ -56,13 +59,15 @@ public class EnemyBehaviorScript : CharacterDataScript
 				else
 				{
 					target = FindFirstObjectByType<PlayerControlScript>().transform;
+					if (target.GetComponent<PlayerControlScript>().dead)
+						target = null;
 				}
 
 			}
 		}
 
 		gunPivot.transform.LookAt(target.position);
-		checkForDeath();
+		//checkForDeath();
 	}
 
     void FixedUpdate()

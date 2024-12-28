@@ -14,12 +14,37 @@ public class CharacterDataScript : MonoBehaviour
 	protected float brake;
 	protected Vector3 movement;
 	public ShootScript weapon;
+	public bool dead = false;
 
-	public void checkForDeath() 
+	public void checkForDeath(CharacterDataScript originShot) 
 	{
-		if (health<=0)
+		if (health<=0 && !dead)
 		{
-			Destroy(gameObject);
+			StartCoroutine(Respawn());
+			dead = true;
+			if (originShot != this)
+			{
+				originShot.points++;
+			}
 		}
+	}
+
+	IEnumerator Respawn()
+	{
+		GetComponent<Renderer>().enabled=false;
+		GetComponent<Collider>().enabled=false;
+		pivot.GetComponent<Renderer>().enabled = false;
+		if (weapon)
+		{
+			Destroy(weapon.gameObject);
+		}
+		health = 100;
+		yield return new WaitForSeconds(5);
+		gameObject.transform.position = Vector3.up;
+		GetComponent<Renderer>().enabled = true;
+		GetComponent<Collider>().enabled = true;
+		pivot.GetComponent<Renderer>().enabled = true;
+		weapon = null;
+		dead = false;
 	}
 }

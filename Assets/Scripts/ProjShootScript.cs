@@ -5,11 +5,7 @@ using UnityEngine;
 public class ProjShootScript : ShootScript
 {
 
-	public Rigidbody rb;
-	private void Awake()
-	{
-		rb = transform.parent.parent.GetComponent<Rigidbody>();
-	}
+	
 	public override void Shoot(Transform t)
 	{
 		Transform projectile = Instantiate(prefab, t.position, t.rotation);

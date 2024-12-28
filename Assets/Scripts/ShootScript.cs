@@ -10,8 +10,15 @@ public class ShootScript : MonoBehaviour
     public Transform prefab;
     public Transform shootPoint;
     public LayerMask layerMask;
-    // Start is called before the first frame update
-    public virtual void Shoot(Transform t)
+
+	public Rigidbody rb;
+	private void Awake()
+	{
+		rb = transform.parent.parent.GetComponent<Rigidbody>();
+	}
+
+	// Start is called before the first frame update
+	public virtual void Shoot(Transform t)
     {
         for (int i = 0; i < shotsFired; i++)
         {
@@ -23,10 +30,12 @@ public class ShootScript : MonoBehaviour
                 if(hit.transform.GetComponent<CharacterDataScript>()) 
                 {
                     hit.transform.GetComponent<CharacterDataScript>().health -= damage;
+                    hit.transform.GetComponent<CharacterDataScript>().checkForDeath(rb.GetComponent<CharacterDataScript>());
 				}
                 Instantiate(prefab, hit.point, t.rotation);
             }
         }
+
     }
     // Update is called once per frame
     public virtual void Fire()

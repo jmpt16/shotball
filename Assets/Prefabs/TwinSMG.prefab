@@ -214,13 +214,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1000
   rate: 100
-  coolTime: 0
   spread: 5
-  damage: 1
+  damage: 5
   shotsFired: 2
-  ammo: 1000
+  ammo: 300
   ammoCost: 2
-  cam: {fileID: 0}
   prefab: {fileID: 5968404891709756163, guid: 46af85b8bb7e9ea449253771109da054, type: 3}
   shootPoint: {fileID: 6815084492336170163}
   layerMask:

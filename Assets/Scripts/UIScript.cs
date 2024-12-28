@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIScript : MonoBehaviour
 {
-    public TextMeshProUGUI healthText, ammoText, pointsText;
+    public TextMeshProUGUI healthText, ammoText, pointsText,timeText;
 
     // Update is called once per frame
     void Update()
@@ -16,11 +16,24 @@ public class UIScript : MonoBehaviour
             healthText.text = "" + player.health;
             if(player.weapon)
                 ammoText.text = "" + player.weapon.ammo;
-            /*pointsText.text = "";
+            else
+				ammoText.text = "--";
+			pointsText.text = "";
             foreach(CharacterDataScript character in FindObjectsByType<CharacterDataScript>(FindObjectsSortMode.None))
             {
-				pointsText.text += character.points +"\n";
-			}*/
+                if(character == player) 
+                {
+					pointsText.text += "Player: "+character.points + "\n";
+				}
+                else
+                {
+					pointsText.text += "CPU: " + character.points + "\n";
+				}
+            }
+            int time= FindFirstObjectByType<LevelManagerScript>().time;
+			int seconds = ((int)time % 60);
+			int minutes = ((int)time / 60);
+            timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
 		}
     }
 }
