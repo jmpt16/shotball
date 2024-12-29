@@ -304,6 +304,7 @@
 "Assets/Scripts/EnemyBehaviorScript.cs"
 "Assets/Scripts/HitParticleScript.cs"
 "Assets/Scripts/LevelManagerScript.cs"
+"Assets/Scripts/MenuScript.cs"
 "Assets/Scripts/PlayerControlScript.cs"
 "Assets/Scripts/ProjScript.cs"
 "Assets/Scripts/ProjShootScript.cs"

@@ -35,5 +35,14 @@ public class UIScript : MonoBehaviour
 			int minutes = ((int)time / 60);
             timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
 		}
+        else
+        {
+            //pointsText.transform.position=Vector3.zero;
+            pointsText.gameObject.SetActive(true);
+			healthText.gameObject.SetActive(false);
+			ammoText.gameObject.SetActive(false);
+			timeText.gameObject.SetActive(false);
+
+        }
     }
 }

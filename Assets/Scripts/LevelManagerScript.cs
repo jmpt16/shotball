@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManagerScript : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class LevelManagerScript : MonoBehaviour
             Destroy(character.gameObject);
 		}
 		yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0);
 	}
 
 	IEnumerator SpawnAtRandom()
